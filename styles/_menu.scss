@@ -19,6 +19,10 @@ button {
     &:active {
         transform: scale(.9);
     }
+    &:disabled{
+        cursor: no-drop;
+        transform: scale(1);
+    }
 }
 
 
@@ -72,4 +76,9 @@ button {
         text-align: center;
         text-transform: capitalize;
     }
+}
+
+.player-section{
+    position: absolute;
+    bottom: 30px;
 }

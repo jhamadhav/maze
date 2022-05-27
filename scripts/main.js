@@ -1,11 +1,10 @@
-
 let rowLen, colLen
 let cellSize = 40 // should be same as in scss
 
 let cells = []
 
 let player = {
-    x: 1,
+    x: 0,
     y: 0
 }
 let food = {}
@@ -13,7 +12,15 @@ let food = {}
 const init = async () => {
     determineSize()
     initGrid()
+
+    // make all buttons disabled
+    btnToggle(0)
+
     await generateMaze()
+
+    // able all buttons
+    btnToggle(1)
+
     placeFood()
 }
 
@@ -98,12 +105,14 @@ const initGrid = () => {
 }
 
 const clearGrid = () => {
-    cells = []
     // delete all prev cells
+    cells = []
     document.getElementById("maze-container").innerHTML = ""
 }
 
 // event listeners
 window.addEventListener("load", init)
 window.addEventListener("resize", init)
-document.getElementById("generate").addEventListener("click", init)
+document.getElementById("generate").addEventListener("click", () => {
+    init()
+})

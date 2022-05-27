@@ -7,3 +7,14 @@ const delay = (ms) => {
         setTimeout(resolve, ms);
     });
 }
+
+const btnToggle = (e) => {
+    let btns = document.getElementsByTagName("button")
+    for (let i = 0; i < btns.length; ++i) {
+        if (e == 0) {
+            btns[i].disabled = true
+        } else {
+            btns[i].disabled = false
+        }
+    }
+}
