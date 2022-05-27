@@ -47,17 +47,28 @@ function Cell(x, y, elem) {
     this.removePlayer = () => {
         this.domElem.classList.remove("player")
     }
+    this.removeClass = (str) => {
+        this.domElem.classList.remove(str)
+    }
 
     this.fillColor = () => {
 
         if (this.status == "food") {
             this.domElem.classList.add("food")
+            return
         }
         if (this.status == "player") {
             this.domElem.classList.add("player")
+            return
         }
         if (this.status == "gen") {
             this.domElem.classList.add("gen")
+            return
+        }
+
+        if (this.travelVisited) {
+            this.domElem.classList.add("travel")
+            return
         }
     }
 

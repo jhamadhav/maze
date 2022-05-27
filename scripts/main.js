@@ -95,6 +95,15 @@ const clearGrid = () => {
     document.getElementById("maze-container").innerHTML = ""
 }
 
+//solver
+document.getElementById("solve").onclick = () => {
+    let val = document.getElementsByTagName("select")[0].value
+    if (val == "dfs") {
+        dfsSolver()
+    }
+}
+
+
 // event listeners
 window.addEventListener("load", init)
 window.addEventListener("resize", init)
@@ -167,7 +176,7 @@ document.getElementById("play-again").addEventListener("click", () => {
 
 //player won screen
 const hasPlayerWon = () => {
-    if (player.x == food.x && player.y == food.y) {
+    if (isPlayerAtFood()) {
 
         blurMaze()
         document.getElementById("playerWon").style.display = "flex"

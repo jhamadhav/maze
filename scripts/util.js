@@ -18,3 +18,7 @@ const btnToggle = (e) => {
         }
     }
 }
+
+const isPlayerAtFood = () => {
+    return (player.x == food.x && player.y == food.y)
+}
