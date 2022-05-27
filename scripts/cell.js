@@ -1,5 +1,6 @@
-function Cell(elem) {
+function Cell(x, y, elem) {
     this.domElem = elem
+    this.x = x, this.y = y
 
     this.genVisited = false
     this.travelVisited = false
@@ -40,6 +41,10 @@ function Cell(elem) {
         }
     }
 
+    this.removeGen = () => {
+        this.domElem.classList.remove("gen")
+    }
+
     this.fillColor = () => {
 
         if (this.status == "food") {
@@ -47,6 +52,9 @@ function Cell(elem) {
         }
         if (this.status == "player") {
             this.domElem.classList.add("player")
+        }
+        if (this.status == "gen") {
+            this.domElem.classList.add("gen")
         }
     }
 
