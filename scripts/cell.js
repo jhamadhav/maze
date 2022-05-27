@@ -45,6 +45,7 @@ function Cell(x, y, elem) {
         this.domElem.classList.remove("gen")
     }
     this.removePlayer = () => {
+        this.status = ""
         this.domElem.classList.remove("player")
     }
     this.removeClass = (str) => {
