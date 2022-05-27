@@ -44,6 +44,9 @@ function Cell(x, y, elem) {
     this.removeGen = () => {
         this.domElem.classList.remove("gen")
     }
+    this.removePlayer = () => {
+        this.domElem.classList.remove("player")
+    }
 
     this.fillColor = () => {
 

@@ -9,6 +9,9 @@ let player = {
 }
 let food = {}
 
+//player mode flag
+let playerMode = 1
+
 const init = async () => {
     determineSize()
     initGrid()
@@ -116,3 +119,76 @@ window.addEventListener("resize", init)
 document.getElementById("generate").addEventListener("click", () => {
     init()
 })
+document.getElementById("player").addEventListener("click", () => {
+    document.getElementsByClassName("navbar")[0].style.display = "none"
+    playerMode = 1
+})
+
+// mouse control
+window.onkeydown = (e) => {
+    if (playerMode == 0) return
+
+    // up
+    if (e.keyCode == 38 && player.y - 1 >= 0) {
+        let index = player.y * colLen + player.x
+
+        if (cells[index].border.top) return
+
+        cells[index].removePlayer()
+
+        player.y -= 1;
+
+        index = player.y * colLen + player.x
+        cells[index].status = "player"
+        cells[index].fillColor()
+        return
+    }
+
+    // down
+    if (e.keyCode == 40 && player.y + 1 < rowLen) {
+        let index = player.y * colLen + player.x
+
+        if (cells[index].border.bottom) return
+
+        cells[index].removePlayer()
+
+        player.y += 1;
+
+        index = player.y * colLen + player.x
+        cells[index].status = "player"
+        cells[index].fillColor()
+        return
+    }
+
+    // left
+    if (e.keyCode == 37 && player.x - 1 >= 0) {
+        let index = player.y * colLen + player.x
+
+        if (cells[index].border.left) return
+
+        cells[index].removePlayer()
+
+        player.x -= 1;
+
+        index = player.y * colLen + player.x
+        cells[index].status = "player"
+        cells[index].fillColor()
+        return
+    }
+
+    // right
+    if (e.keyCode == 39 && player.x + 1 < colLen) {
+        let index = player.y * colLen + player.x
+
+        if (cells[index].border.right) return
+
+        cells[index].removePlayer()
+
+        player.x += 1;
+
+        index = player.y * colLen + player.x
+        cells[index].status = "player"
+        cells[index].fillColor()
+        return
+    }
+}
