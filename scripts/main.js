@@ -96,11 +96,22 @@ const clearGrid = () => {
 }
 
 //solver
-document.getElementById("solve").onclick = () => {
+document.getElementById("solve").onclick = async () => {
     let val = document.getElementsByTagName("select")[0].value
-    if (val == "dfs") {
-        dfsSolver()
+
+    for (let i = 0; i < cells.length; ++i) {
+        cells[i].removeClass("travel")
+        cells[i].travelVisited = false
     }
+
+    btnToggle(0)
+    if (val == "dfs") {
+        await dfsSolver()
+    } else if (val == "bfs") {
+        await bfsSolver()
+    }
+    btnToggle(1)
+
 }
 
 

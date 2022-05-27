@@ -13,7 +13,7 @@ const generateMaze = async () => {
         cells[index].status = "gen"
         cells[index].fillColor()
 
-        await delay(10)
+        // await delay(10)
 
         cells[index].status = null
         cells[index].removeGen()
