@@ -1,0 +1,74 @@
+button,
+select {
+    background-color: #fff;
+    outline: none;
+    border: 2px solid black;
+    padding: 6px 10px;
+    font-size: large;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+        background-color: #efefef;
+    }
+}
+
+button {
+    &:active {
+        transform: scale(.9);
+    }
+}
+
+
+
+.navbar {
+    width: 30%;
+    height: 100%;
+    max-width: 300px;
+    background-color: #fff;
+    border-right: 3px solid black;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    .title {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: x-large;
+        text-transform: uppercase;
+        padding: 4px;
+    }
+
+    .inputs {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 40px;
+    }
+}
+
+.inputs{
+    label{
+        font-size: large;
+        margin-bottom: 10px;
+    }
+    option {
+        text-align: center;
+        text-transform: capitalize;
+    }
+}

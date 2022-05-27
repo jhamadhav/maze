@@ -1,0 +1,28 @@
+ @import "./menu","./maze";
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     background-color: #fff;
+     width: 100%;
+     height: 100%;
+ }
+
+ .container {
+     width: 100%;
+     height: 100%;
+     position: fixed;
+     top: 0;
+     left: 0;
+     background: #fff;
+
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+ }
+

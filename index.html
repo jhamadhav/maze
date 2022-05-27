@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- meta -->
+
+    <title>Maze</title>
+
+    <!-- style and scripts -->
+    <link rel="stylesheet" href="./styles/main.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <div class="title">Maze Solver</div>
+
+            <section title="inputs" class="inputs">
+                <label for="cars">Choose an Algo to solve:</label>
+
+                <select name="algos" id="algo">
+                    <option value="bfs">Breadth First Search</option>
+                    <option value="dfs">Depth First Search</option>
+                    <option value="as">A* search</option>
+                </select>
+            </section>
+
+            <section title="Buttons" class="buttons">
+                <button id="generate">Generate</button>
+                <button id="solve">Solve</button>
+            </section>
+        </div>
+        <div class="maze-wrapper">
+            <div id="maze-container">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
