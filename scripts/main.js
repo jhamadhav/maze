@@ -3,8 +3,7 @@ let cellSize = 40 // should be same as in scss
 
 let cells = []
 
-let player = {}
-let food = {}
+let player = {}, food = {}
 
 //player mode flag
 let playerMode = 0
@@ -28,24 +27,6 @@ const init = async () => {
     btnToggle(1)
 
     placeFood()
-}
-
-const placeFood = () => {
-    for (let j = 0; j < rowLen; ++j) {
-        for (let i = 0; i < colLen; ++i) {
-            let index = j * colLen + i
-            if (food.x == i && food.y == j) {
-                cells[index].status = "food"
-                cells[index].fillColor()
-            }
-
-            if (i == player.x && j == player.y) {
-                cells[index].status = "player"
-                cells[index].fillColor()
-            }
-        }
-    }
-
 }
 
 const determineSize = () => {
@@ -106,8 +87,6 @@ const initGrid = () => {
             }
         }
     }
-
-
 }
 
 const clearGrid = () => {
@@ -119,27 +98,30 @@ const clearGrid = () => {
 // event listeners
 window.addEventListener("load", init)
 window.addEventListener("resize", init)
-document.getElementById("generate").addEventListener("click", () => {
-    init()
-})
+document.getElementById("generate").addEventListener("click", init)
 
 //blur maze
 const blurMaze = () => {
     document.getElementsByClassName("container")[0].style.filter = "blur(4px)"
 }
 
-
 //player mode
 document.getElementById("player").addEventListener("click", () => {
 
+    //make instruction button pop
     document.getElementById("keyInstruct").style.display = "flex"
     blurMaze()
 
+    // change watermark text
     document.getElementById("inp").innerText = "player"
 
+    // make menu disappear
     document.getElementsByClassName("navbar")[0].style.display = "none"
 
+    // make go to algo btn visible
     document.getElementById("algobtn-menu").style.display = "block"
+
+    // player mode flag on
     playerMode = 1
 })
 
@@ -154,15 +136,23 @@ const hideInfo = () => {
 
 //algo mode
 const algoMode = () => {
+
+    // menu visible
     document.getElementsByClassName("navbar")[0].style.display = "flex"
 
+    // prev algo btn gone
     document.getElementById("algobtn-menu").style.display = "none"
+
+    // player mode off
     playerMode = 0
 
+    // change watermark
     document.getElementById("inp").innerText = "solver"
+
     hideInfo()
 }
 
+// event listener for all algo goto btn
 let algobtns = document.getElementsByClassName("algobtn")
 for (let i = 0; i < algobtns.length; ++i) {
     algobtns[i].addEventListener("click", algoMode)
@@ -188,8 +178,9 @@ const hasPlayerWon = () => {
 window.onkeydown = (e) => {
     if (playerMode == 0) return
 
-    // up
+    // key combos
     if (e.keyCode == 38 && player.y - 1 >= 0) {
+        //up
         let index = player.y * colLen + player.x
 
         if (cells[index].border.top) return
@@ -197,17 +188,8 @@ window.onkeydown = (e) => {
         cells[index].removePlayer()
 
         player.y -= 1;
-
-        index = player.y * colLen + player.x
-        cells[index].status = "player"
-        cells[index].fillColor()
-
-        hasPlayerWon()
-        return
-    }
-
-    // down
-    if (e.keyCode == 40 && player.y + 1 < rowLen) {
+    } else if (e.keyCode == 40 && player.y + 1 < rowLen) {
+        //down
         let index = player.y * colLen + player.x
 
         if (cells[index].border.bottom) return
@@ -216,16 +198,8 @@ window.onkeydown = (e) => {
 
         player.y += 1;
 
-        index = player.y * colLen + player.x
-        cells[index].status = "player"
-        cells[index].fillColor()
-
-        hasPlayerWon()
-        return
-    }
-
-    // left
-    if (e.keyCode == 37 && player.x - 1 >= 0) {
+    } else if (e.keyCode == 37 && player.x - 1 >= 0) {
+        //left
         let index = player.y * colLen + player.x
 
         if (cells[index].border.left) return
@@ -233,17 +207,8 @@ window.onkeydown = (e) => {
         cells[index].removePlayer()
 
         player.x -= 1;
-
-        index = player.y * colLen + player.x
-        cells[index].status = "player"
-        cells[index].fillColor()
-
-        hasPlayerWon()
-        return
-    }
-
-    // right
-    if (e.keyCode == 39 && player.x + 1 < colLen) {
+    } else if (e.keyCode == 39 && player.x + 1 < colLen) {
+        //right
         let index = player.y * colLen + player.x
 
         if (cells[index].border.right) return
@@ -251,12 +216,12 @@ window.onkeydown = (e) => {
         cells[index].removePlayer()
 
         player.x += 1;
-
-        index = player.y * colLen + player.x
-        cells[index].status = "player"
-        cells[index].fillColor()
-        hasPlayerWon()
-
-        return
     }
+
+    index = player.y * colLen + player.x
+    cells[index].status = "player"
+    cells[index].fillColor()
+
+    hasPlayerWon()
+    return
 }

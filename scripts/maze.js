@@ -13,7 +13,7 @@ const generateMaze = async () => {
         cells[index].status = "gen"
         cells[index].fillColor()
 
-        // await delay(10)
+        await delay(10)
 
         cells[index].status = null
         cells[index].removeGen()
@@ -98,4 +98,22 @@ const generateMaze = async () => {
         }
 
     }
+}
+
+const placeFood = () => {
+    for (let j = 0; j < rowLen; ++j) {
+        for (let i = 0; i < colLen; ++i) {
+            let index = j * colLen + i
+            if (food.x == i && food.y == j) {
+                cells[index].status = "food"
+                cells[index].fillColor()
+            }
+
+            if (i == player.x && j == player.y) {
+                cells[index].status = "player"
+                cells[index].fillColor()
+            }
+        }
+    }
+
 }
