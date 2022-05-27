@@ -109,6 +109,8 @@ document.getElementById("solve").onclick = async () => {
         await dfsSolver()
     } else if (val == "bfs") {
         await bfsSolver()
+    } else if (val == "as") {
+        await aStarSolver()
     }
     btnToggle(1)
 
