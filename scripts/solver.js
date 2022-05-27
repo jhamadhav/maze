@@ -5,7 +5,9 @@ const dfsSolver = async () => {
 
     while (stack.length > 0) {
 
-        await delay(100)
+        if (animFlag) {
+            await delay(100)
+        }
         let pt = stack[stack.length - 1]
 
         if (food.x == pt.x && food.y == pt.y) return
@@ -60,7 +62,9 @@ const bfsSolver = async () => {
 
     while (q.length > 0) {
 
-        await delay(100)
+        if (animFlag) {
+            await delay(100)
+        }
         let pt = q[0]
 
         if (food.x == pt.x && food.y == pt.y) return
@@ -120,7 +124,9 @@ const aStarSolver = async () => {
 
     while (q.length > 0) {
 
-        await delay(100)
+        if (animFlag) {
+            await delay(100)
+        }
         let pt = q[0][1]
 
         if (food.x == pt.x && food.y == pt.y) return

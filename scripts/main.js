@@ -8,6 +8,9 @@ let player = {}, food = {}
 //player mode flag
 let playerMode = 0
 
+//animation flag
+let animFlag = 1
+
 const init = async () => {
 
     player = {
@@ -116,6 +119,15 @@ document.getElementById("solve").onclick = async () => {
 
 }
 
+document.getElementById("anim-flag").oninput = () => {
+    let inp = document.getElementById("anim-flag").checked
+
+    if (inp == true) {
+        animFlag = 1
+    } else {
+        animFlag = 0
+    }
+}
 
 // event listeners
 window.addEventListener("load", init)
