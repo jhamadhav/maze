@@ -1,4 +1,4 @@
- @import "./menu","./maze";
+ @import "./menu", "./maze", "./infoScreen";
 
  * {
      margin: 0;
@@ -27,3 +27,23 @@
      align-items: center;
  }
 
+ #algobtn-menu {
+     position: absolute;
+     top: 10px;
+     left: 10px;
+     display: none;
+ }
+
+ #game-title {
+     position: fixed;
+     bottom: -10px;
+     right: 6px;
+     opacity: .3;
+     color: gray;
+     font-size: 3.1rem;
+     z-index: 100;
+     width: 100%;
+     text-align: right;
+     text-transform: uppercase;
+     font-family: 'Odibee Sans', cursive;
+ }

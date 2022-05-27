@@ -3,16 +3,19 @@ let cellSize = 40 // should be same as in scss
 
 let cells = []
 
-let player = {
-    x: 0,
-    y: 0
-}
+let player = {}
 let food = {}
 
 //player mode flag
-let playerMode = 1
+let playerMode = 0
 
 const init = async () => {
+
+    player = {
+        x: 0,
+        y: 0
+    }
+
     determineSize()
     initGrid()
 
@@ -30,7 +33,7 @@ const init = async () => {
 const placeFood = () => {
     for (let j = 0; j < rowLen; ++j) {
         for (let i = 0; i < colLen; ++i) {
-            let index = j * rowLen + i
+            let index = j * colLen + i
             if (food.x == i && food.y == j) {
                 cells[index].status = "food"
                 cells[index].fillColor()
@@ -66,8 +69,8 @@ const initGrid = () => {
 
     // add food loc
     food = {
-        x: rand(1, colLen),
-        y: rand(1, rowLen)
+        x: rand(1, colLen - 1),
+        y: rand(1, rowLen - 1)
     }
 
     for (let j = 0; j < rowLen; ++j) {
@@ -119,10 +122,67 @@ window.addEventListener("resize", init)
 document.getElementById("generate").addEventListener("click", () => {
     init()
 })
+
+//blur maze
+const blurMaze = () => {
+    document.getElementsByClassName("container")[0].style.filter = "blur(4px)"
+}
+
+
+//player mode
 document.getElementById("player").addEventListener("click", () => {
+
+    document.getElementById("keyInstruct").style.display = "flex"
+    blurMaze()
+
+    document.getElementById("inp").innerText = "player"
+
     document.getElementsByClassName("navbar")[0].style.display = "none"
+
+    document.getElementById("algobtn-menu").style.display = "block"
     playerMode = 1
 })
+
+// hide info screen
+const hideInfo = () => {
+    let elem = document.getElementsByClassName("infoScreen")
+    for (let i = 0; i < elem.length; ++i) {
+        elem[i].style.display = "none"
+    }
+    document.getElementsByClassName("container")[0].style.filter = "blur(0)"
+}
+
+//algo mode
+const algoMode = () => {
+    document.getElementsByClassName("navbar")[0].style.display = "flex"
+
+    document.getElementById("algobtn-menu").style.display = "none"
+    playerMode = 0
+
+    document.getElementById("inp").innerText = "solver"
+    hideInfo()
+}
+
+let algobtns = document.getElementsByClassName("algobtn")
+for (let i = 0; i < algobtns.length; ++i) {
+    algobtns[i].addEventListener("click", algoMode)
+}
+
+// play again mode
+document.getElementById("play-again").addEventListener("click", () => {
+    init()
+    hideInfo()
+})
+
+
+//player won screen
+const hasPlayerWon = () => {
+    if (player.x == food.x && player.y == food.y) {
+
+        blurMaze()
+        document.getElementById("playerWon").style.display = "flex"
+    }
+}
 
 // mouse control
 window.onkeydown = (e) => {
@@ -141,6 +201,8 @@ window.onkeydown = (e) => {
         index = player.y * colLen + player.x
         cells[index].status = "player"
         cells[index].fillColor()
+
+        hasPlayerWon()
         return
     }
 
@@ -157,6 +219,8 @@ window.onkeydown = (e) => {
         index = player.y * colLen + player.x
         cells[index].status = "player"
         cells[index].fillColor()
+
+        hasPlayerWon()
         return
     }
 
@@ -173,6 +237,8 @@ window.onkeydown = (e) => {
         index = player.y * colLen + player.x
         cells[index].status = "player"
         cells[index].fillColor()
+
+        hasPlayerWon()
         return
     }
 
@@ -189,6 +255,8 @@ window.onkeydown = (e) => {
         index = player.y * colLen + player.x
         cells[index].status = "player"
         cells[index].fillColor()
+        hasPlayerWon()
+
         return
     }
 }

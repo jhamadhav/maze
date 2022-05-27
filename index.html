@@ -13,7 +13,8 @@
     <!-- style and font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Raleway&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./styles/main.min.css">
 
     <!-- scripts -->
@@ -25,7 +26,12 @@
 
 <body>
 
+    <div id="game-title">Maze | <span id="inp">Solver</span>
+    </div>
+
     <div class="container">
+        <button class="algobtn" id="algobtn-menu">Go To Algo</button>
+
         <div class="navbar">
             <div class="title">Maze Solver</div>
 
@@ -68,6 +74,23 @@
             </div>
         </div>
     </div>
+
+    <!-- winning screen -->
+    <div class="infoScreen" id="playerWon">
+        <h1>🎉🎉 You won !! 🎉🎉</h1>
+        <section title="Buttons" class="buttons">
+            <button class="algobtn">Go To Algo</button>
+            <button id="play-again">Play again</button>
+        </section>
+    </div>
+
+    <!-- instruction -->
+    <div class="infoScreen" id="keyInstruct">
+        <img src="./images/keys.jpg" alt="keys instruction">
+        <p>Use Keyboard to control the player!</p>
+        <button class="ok-btn" onclick="hideInfo()">OK</button>
+    </div>
+
 
 </body>
 
