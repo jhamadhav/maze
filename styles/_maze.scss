@@ -42,18 +42,16 @@ $cell-size:40px;
     border: $cell-border-size solid black;
 }
 
-.food {
-    background-color: red;
-}
-
-.player {
-    background-color: cyan;
-}
-
+// different states
 .gen {
     background-color: gray;
 }
-
 .travel{
     background-color: lightcyan;
+}
+.player {
+    background-color: cyan;
+}
+.food {
+    background-color: red;
 }
