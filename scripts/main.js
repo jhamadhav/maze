@@ -131,7 +131,6 @@ document.getElementById("anim-flag").oninput = () => {
 
 // event listeners
 window.addEventListener("load", init)
-window.addEventListener("resize", init)
 document.getElementById("generate").addEventListener("click", init)
 
 //blur maze
