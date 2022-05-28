@@ -13,6 +13,18 @@ let animFlag = 1
 
 const init = async () => {
 
+    //anim flag from localStorage
+    if (localStorage) {
+        let animData = localStorage.getItem("anim-flag")
+        if (animData == null || animData == true) {
+            animFlag = 1
+            document.getElementById("anim-flag").checked = true
+        } else {
+            animFlag = 0
+            document.getElementById("anim-flag").checked = false
+        }
+    }
+
     player = {
         x: 0,
         y: 0
@@ -124,8 +136,10 @@ document.getElementById("anim-flag").oninput = () => {
 
     if (inp == true) {
         animFlag = 1
+        localStorage.setItem("anim-flag", true)
     } else {
         animFlag = 0
+        localStorage.setItem("anim-flag", false)
     }
 }
 
