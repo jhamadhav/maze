@@ -1,5 +1,5 @@
 let rowLen, colLen
-let cellSize = 40 // should be same as in scss
+let cellSize = 36 // should be same as in scss
 
 let cells = []
 
