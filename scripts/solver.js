@@ -5,9 +5,6 @@ const dfsSolver = async () => {
 
     while (stack.length > 0) {
 
-        if (animFlag) {
-            await delay(100)
-        }
         let pt = stack[stack.length - 1]
 
         if (food.x == pt.x && food.y == pt.y) return
@@ -16,6 +13,10 @@ const dfsSolver = async () => {
         index = pt.y * colLen + pt.x
         cells[index].travelVisited = true
         cells[index].fillColor()
+
+        if (animFlag) {
+            await delay(100)
+        }
 
         let tempIndex
         if (cells[index].border.top == false) {
