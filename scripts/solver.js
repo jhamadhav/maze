@@ -121,7 +121,7 @@ const hfn = (e) => {
 const aStarSolver = async () => {
     let q = []
     let index = player.y * colLen + player.x
-    q.push([hfn(cells[index]), cells[index]])
+    q.push([hfn(cells[index]), cells[index], 0])
 
     while (q.length > 0) {
 
@@ -139,14 +139,14 @@ const aStarSolver = async () => {
         if (cells[index].border.top == false) {
             tempIndex = (pt.y - 1) * colLen + pt.x
             if (cells[tempIndex].travelVisited == false) {
-                q.push([hfn(cells[tempIndex]) + 1, cells[tempIndex]])
+                q.push([hfn(cells[tempIndex]) + q[0][2] + 1, cells[tempIndex], q[0][2] + 1])
             }
         }
         if (cells[index].border.bottom == false) {
             tempIndex = (pt.y + 1) * colLen + pt.x
 
             if (cells[tempIndex].travelVisited == false) {
-                q.push([hfn(cells[tempIndex]) + 1, cells[tempIndex]])
+                q.push([hfn(cells[tempIndex]) + q[0][2] + 1, cells[tempIndex], q[0][2] + 1])
             }
         }
 
@@ -154,7 +154,7 @@ const aStarSolver = async () => {
             tempIndex = pt.y * colLen + pt.x - 1
 
             if (cells[tempIndex].travelVisited == false) {
-                q.push([hfn(cells[tempIndex]) + 1, cells[tempIndex]])
+                q.push([hfn(cells[tempIndex]) + q[0][2] + 1, cells[tempIndex], q[0][2] + 1])
 
             }
         }
@@ -162,7 +162,7 @@ const aStarSolver = async () => {
             tempIndex = pt.y * colLen + pt.x + 1
 
             if (cells[tempIndex].travelVisited == false) {
-                q.push([hfn(cells[tempIndex]) + 1, cells[tempIndex]])
+                q.push([hfn(cells[tempIndex]) + q[0][2] + 1, cells[tempIndex], q[0][2] + 1])
             }
         }
 
