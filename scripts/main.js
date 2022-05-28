@@ -141,9 +141,22 @@ const blurMaze = () => {
 //player mode
 document.getElementById("player").addEventListener("click", () => {
 
-    //make instruction button pop
-    document.getElementById("keyInstruct").style.display = "flex"
-    blurMaze()
+    let flag = 1
+    let week = 7 * 24 * 60 * 60 * 1000
+    if (localStorage) {
+        if (localStorage.getItem("popup") > Date.now()) {
+            flag = 0
+        } else {
+            localStorage.setItem("popup", Date.now() + week)
+            flag = 1
+        }
+    }
+
+    if (flag == 1) {
+        //make instruction button pop
+        document.getElementById("keyInstruct").style.display = "flex"
+        blurMaze()
+    }
 
     // change watermark text
     document.getElementById("inp").innerText = "player"
