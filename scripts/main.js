@@ -16,7 +16,7 @@ const init = async () => {
     //anim flag from localStorage
     if (localStorage) {
         let animData = localStorage.getItem("anim-flag")
-        if (animData == null || animData == true) {
+        if (animData == null || animData == "true") {
             animFlag = 1
             document.getElementById("anim-flag").checked = true
         } else {
