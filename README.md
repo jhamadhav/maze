@@ -23,12 +23,11 @@ The steps are a follows:
 
 # 2. Player Mode
 
-<center>
-<img src="./images/keys.jpg" width="200px"> 
-<p>
-Here you can control the player by using arrow keys on the keyboard to explore and get the feel of the grid.
+<p align="center">
+<img src="./images/keys.jpg" width="200px" />
+    
+<p align="center">Here you can control the player by using arrow keys on the keyboard to explore and get the feel of the grid. </p>
 </p>
-</center>
 
 # 3. Maze Solution
 
@@ -36,26 +35,26 @@ To solve the maze i.e. to take the player to food, we can use different algorith
 
 ## 1. Depth First search (DFS)
 
-<center>
-<img src="./images/dfs-demo.gif" height="200px">
-</center>
+<p align="center">
+<img src="./images/dfs-demo.gif" height="220px">
+</p>
 
 *Depth First Search (DFS)* is an edge-based technique. It uses the Stack data structure and performs two stages, first visited vertices are pushed into the stack, and second if there are no vertices then visited vertices are popped.
 
 ## 2. Breadth First search (BFS)
 
-<center>
-<img src="./images/bfs-demo.gif" height="200px">
-</center>
+<p align="center">
+<img src="./images/bfs-demo.gif" height="220px">
+</p>
 
 *Breadth First Search (BFS)* is a vertex-based technique for finding the shortest path in the graph. It uses a Queue data structure that follows first in first out. 
 In BFS, one vertex is selected at a time when it is visited and marked then its adjacent are visited and stored in the queue.  
 
 ## 3. A star Search (A*)
 
-<center>
-<img src="./images/as-demo.gif" height="200px">
-</center>
+<p align="center">
+<img src="./images/as-demo.gif" height="230px">
+</p>
 
 A* is an extension of Dijkstra's algorithm with some characteristics of breadth-first search (BFS).
 
